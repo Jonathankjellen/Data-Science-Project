@@ -2,17 +2,19 @@ from collections import defaultdict
 from datetime import datetime
 
 def process_party_mapping(graph, mapping_function, label):
-    # Initialize a dictionary to store the mapping of which party each person's questions go to
+    # Initi dict to store which party answer/questions which party
     person_to_party_mapping = {}
 
     # Iterate through person nodes
     for person_node in graph.vs.select(type="person"):
         party = person_node["partibet"]
+
         # Find the questions directed from this person
         questions_indices = graph.successors(person_node)
 
         for question_index in questions_indices:
             question = graph.vs[question_index]
+            
             # Find the person directed from this question
             person_index = graph.successors(question)
 
@@ -25,10 +27,10 @@ def process_party_mapping(graph, mapping_function, label):
 
     data_ = person_to_party_mapping
 
-    # Create a dictionary to store the counts for each key
+    # Dictionary for all counts for each key
     string_counts = {}
 
-    # Iterate through the dictionary
+    # loop through the dictionary
     for key, values in data_.items():
         key_counts = {}  # Create a dictionary for counts specific to this key
         for value in values:
@@ -70,16 +72,15 @@ def party_answered_which_party(graph):
 
 def questions_per_month(database):
 
-    question_list = database
-
-    # Initialize dictionaries to store the counts
+    # Init dicts to store the counts
     total_counts = defaultdict(int)
     monthly_counts = defaultdict(int)
     yearly_counts = defaultdict(lambda: defaultdict(int))
 
-    # Iterate through the list of dictionaries
-    for entry in question_list:
-        # Parse the date string to a datetime object
+    # Iterate through database
+    for entry in database:
+
+        # Parse date to a datetime object
         date_object = datetime.strptime(entry["question_date"], "%Y-%m-%d")
         
         # Update total counts
@@ -91,11 +92,12 @@ def questions_per_month(database):
         # Update yearly counts
         yearly_counts[date_object.year][date_object.strftime("%B")] += 1
 
-    # Calculate the average for all months and years
+    # Average for all months and years
+    # TODO: Now hardcoded for exactly 4 years
     total_months = 12*4
     average_count = sum(total_counts.values()) / total_months
 
-    # Print results
+    # Print all results
     print("\nAverage Questions Per Month", average_count)
 
     print("\nAverage Questions For Each Month")
