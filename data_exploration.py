@@ -20,13 +20,14 @@ def answers_per_party(database):
     for entry in database:
         answe_by_party = entry["besvaradav_partibet"]
 
-        dict_ans[answe_by_party] += 1
+        if answe_by_party != "":
+            dict_ans[answe_by_party] += 1
 
     # Print the counts for each key
     print("\nAnswers per party:")
     for key, count in dict_ans.items():
         print(f"{key} {count} times.")
-        
+
 def party_asked_which_party(database):
     dict_ans = defaultdict(lambda: defaultdict(int))
     
