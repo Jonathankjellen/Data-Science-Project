@@ -1,7 +1,32 @@
 from collections import defaultdict
 from datetime import datetime
 
+def questions_per_party(database):
+    dict_ans = defaultdict(int)
+    
+    for entry in database:
+        asked_by_party = entry["undertecknare_partibet"]
 
+        dict_ans[asked_by_party] += 1
+
+    # Print the counts for each key
+    print("\nQuestions per party:")
+    for key, count in dict_ans.items():
+        print(f"{key} {count} times.")
+        
+def answers_per_party(database):
+    dict_ans = defaultdict(int)
+    
+    for entry in database:
+        answe_by_party = entry["besvaradav_partibet"]
+
+        dict_ans[answe_by_party] += 1
+
+    # Print the counts for each key
+    print("\nAnswers per party:")
+    for key, count in dict_ans.items():
+        print(f"{key} {count} times.")
+        
 def party_asked_which_party(database):
     dict_ans = defaultdict(lambda: defaultdict(int))
     
