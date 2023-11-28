@@ -53,7 +53,8 @@ def party_answered_which_party(database):
         asked_by_party = entry["undertecknare_partibet"]
         answe_by_party = entry["besvaradav_partibet"]
 
-        dict_ans[answe_by_party][asked_by_party] += 1
+        if answe_by_party != "":
+            dict_ans[answe_by_party][asked_by_party] += 1
 
     # Print the counts for each key
     for key, key_counts in dict_ans.items():
