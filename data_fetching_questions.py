@@ -198,7 +198,9 @@ def parse_question_data(response_questions):
     return database
 
 
-
+# TODO: Remove duplicated texts
+# TODO: Remove duplicates
+# TODO: Remove entrys with empty questions.
 def remove_duplicates(database):
     for i, entry in enumerate(database):
         id_ = entry['id_']
@@ -222,6 +224,8 @@ def main(start_date, end_date):
 
     # Parse the data
     database = parse_question_data(response_questions)
+
+    # TODO:...
     database = remove_duplicates(database)
 
     # Save file in .txt format
