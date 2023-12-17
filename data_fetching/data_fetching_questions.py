@@ -3,6 +3,7 @@ import json
 from bs4 import BeautifulSoup
 import argparse
 
+# Written by Magnus Olander
 
 # Get parameters for the search using riksdagen.se RUST API
 def define_params(doc_type, from_date, tom_date):
