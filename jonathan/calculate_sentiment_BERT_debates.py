@@ -41,6 +41,9 @@ def remove_names(question):
     
     return new_text
 
+
+# Code taken from this source:
+# https://medium.com/@priyatoshanand/handle-long-text-corpus-for-bert-model-3c85248214aa
 def chunk_text_to_window_size_and_predict_proba(input_ids, attention_mask, total_len):
     """
     This function splits the given input text into chunks of a specified window length, 
@@ -93,6 +96,8 @@ def chunk_text_to_window_size_and_predict_proba(input_ids, attention_mask, total
         start = end
     return proba_list
 
+# Code taken from this source:
+# https://medium.com/@priyatoshanand/handle-long-text-corpus-for-bert-model-3c85248214aa
 def get_mean_from_proba(proba_list):
     """
     This function computes the mean probabilities of class predictions over all the chunks.
