@@ -198,9 +198,39 @@ def parse_question_data(response_questions):
     return database
 
 
-# TODO: Remove duplicated texts
-# TODO: Remove duplicates
-# TODO: Remove entrys with empty questions.
+def remove_repeated_text_in_database(database):
+
+    for entry in database:
+        answer = entry['answer']
+        question = entry['question']
+
+        answer = remove_repeated_text(answer)
+        entry['answer'] = answer
+
+        question = remove_repeated_text(question)
+        entry['question'] = question
+
+    return database
+
+def remove_repeated_text(text):
+    # Check if text is 100 chars
+    if len(text) < 100:
+        return text
+
+    # Take 100 characters
+    first_100_chars = text[:100]
+
+    # Find where the repetition starts, if any
+    repetition_index = text.find(first_100_chars, 1)
+
+    # If repetition is found, return the portion of the text up to the repetition
+    if repetition_index != -1:
+        repeated_text = text[:repetition_index]
+        return repeated_text
+    else:
+        return text
+    
+
 def remove_duplicates(database):
     for i, entry in enumerate(database):
         id_ = entry['id_']
@@ -215,7 +245,7 @@ def remove_duplicates(database):
     return database
 
 
-def main(start_date, end_date):
+def main(start_date, end_date, output_name):
 
     doc_type = "fr" # Get documents from "Skriftlig fråga"
 
@@ -225,11 +255,14 @@ def main(start_date, end_date):
     # Parse the data
     database = parse_question_data(response_questions)
 
-    # TODO:...
+    # Remove repeated texts from questions and answers
+    database = remove_repeated_text(database)
+
+    # Removes duplicate/triplicate entrys
     database = remove_duplicates(database)
 
     # Save file in .txt format
-    with open('data.txt', 'w') as file:
+    with open(output_name + ".txt", 'w') as file:
         # Serialize the data as JSON and write it to the file
         json.dump(database, file)
 
