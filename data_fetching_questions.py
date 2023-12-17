@@ -270,6 +270,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Fetches questions, answers and other information from riksdagen.se API, for the category \"Skriftlig fråga\" and \"Svar på skriftlig fråga\"")
     parser.add_argument("--start_date", type=str, help="Start date in YYYY-MM-DD format", required=True)
     parser.add_argument("--end_date", type=str, help="End date in YYYY-MM-DD format", required=True)
+    parser.add_argument("--output_name", type=str, help="Output file name without extension", required=True)
     args = parser.parse_args()
     
-    main(args.start_date, args.end_date)
+    main(args.start_date, args.end_date, args.output_name)
