@@ -1,10 +1,10 @@
 # Written by jonathan kjellen
 
 # Before running this file make sure these paths contain the correct file:
-file_path_questions_answers = 'data/data_all_final.txt'
+file_path_questions_answers = 'data/data_all/data_all_final.txt'
 # Installing transformers is also needed by doing "pip install transformers"
 
-# Load model directly
+
 import matplotlib.pyplot as plt
 import json
 import pandas as pd

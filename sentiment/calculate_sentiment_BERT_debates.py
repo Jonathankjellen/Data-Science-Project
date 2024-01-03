@@ -1,7 +1,7 @@
 # Written by jonathan kjellen
 
 # Before running this file make sure these paths contain the correct file:
-file_path_debates = 'data/data_debates_2018-09-09_to_2022-09-11.txt'
+file_path_debates = 'data/data 2018-09-09 2022-09-11/data_debates_2018-09-09_to_2022-09-11.txt'
 
 # Installing transformers is also needed by doing "pip install transformers"
 
