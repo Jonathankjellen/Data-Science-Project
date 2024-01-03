@@ -4,6 +4,7 @@ import requests
 import json
 from bs4 import BeautifulSoup
 import re
+import argparse
 
 
 # Get parameters for the search using riksdagen.se RUST API
@@ -313,10 +314,10 @@ def add_answers_from_debate(debate):
 
 
 
-def main():
+def main(start_date, end_date, output_name):
     doc_type = "ip" # Get documents from "interpellations"
-    start_date = "2018-09-09"
-    end_date = "2022-09-11"
+    #start_date = "2018-09-09"
+    #end_date = "2022-09-11"
 
     # Get all question data
     response_questions = get_data_questions(doc_type, start_date, end_date)
@@ -358,9 +359,15 @@ def main():
 
 
     # Save file in .txt format
-    with open('data/data_debates_2018-09-09_to_2022-09-11.txt', 'w') as file:
+    with open('data/'+ output_name + ".txt", 'w') as file:
         # Serialize the data as JSON and write it to the file
         json.dump(database, file)
 
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Fetches questions, answers and other information from riksdagen.se API, for the category \"Skriftlig fråga\" and \"Svar på skriftlig fråga\"")
+    parser.add_argument("--start_date", type=str, help="Start date in YYYY-MM-DD format", required=True)
+    parser.add_argument("--end_date", type=str, help="End date in YYYY-MM-DD format", required=True)
+    parser.add_argument("--output_name", type=str, help="Output file name without extension", required=True)
+    args = parser.parse_args()
+    
+    main(args.start_date, args.end_date, args.output_name)
