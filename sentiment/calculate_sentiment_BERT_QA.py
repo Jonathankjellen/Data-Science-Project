@@ -1,5 +1,8 @@
 # Written by jonathan kjellen
 
+# Before running this file make sure these paths contain the correct file:
+file_path_questions_answers = 'data/data_all_final.txt'
+# Installing transformers is also needed by doing "pip install transformers"
 
 # Load model directly
 import matplotlib.pyplot as plt
@@ -187,7 +190,6 @@ def main(file_path,save_path):
     df.to_csv(save_path, index=False)
 
 if __name__ == '__main__':
-    file_path = 'data/data_all_final.txt'
     save_path = "data/data_all_final_sentiment_BERT.csv"
-    main(file_path,save_path)
+    main(file_path_questions_answers,save_path)
     

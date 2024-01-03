@@ -1,23 +1,21 @@
 # Written by jonathan kjellen
 
+# Before running this file make sure these paths contain the correct file:
+file_path_debates = 'data/data_debates_2018-09-09_to_2022-09-11.txt'
+
+# Installing transformers is also needed by doing "pip install transformers"
 
 
 # Load model directly
 import matplotlib.pyplot as plt
 import json
-import requests
-import re
 import pandas as pd
 import numpy as np
 from transformers import AutoTokenizer, AutoModelForSequenceClassification
 import torch
 from transformers import pipeline
-import timeit
-import ast
 
-import string
-import nltk
-import re
+
 if torch.cuda.is_available():  
     dev = "cuda:0" 
 else:  
@@ -192,7 +190,6 @@ def main(file_path,save_path):
     df.to_csv(save_path, index=False)
 
 if __name__ == '__main__':
-    file_path = 'data/data_debates_2018-09-09_to_2022-09-11.txt'
     save_path = "data/data_debates_sentiment_BERT_2018_2022.csv"
-    main(file_path,save_path)
+    main(file_path_debates,save_path)
     
