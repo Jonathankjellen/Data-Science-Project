@@ -54,4 +54,4 @@ Sentiment change over time was explored for each party and topic, plotting senti
     pip install notebook pandas shapely
     ```
 
-4. Run the in the numbered order. The requered ones are: 1. Fetch all required data. 2. Perform topic and sentiment analysis, and merge the results. 3. It is now possible to perform the research questions (Sentiment change also requires the creation of a igraph using sentiment and topic analysis). It is alo possible to perform different kinds of data exploration
+4. Run the Python-files and notebooks according to the numbered dictionaries. The requered ones are: 1. Fetch all required data. 2. Perform topic and sentiment analysis, and merge the results. 3. It is now possible to perform the research questions (Sentiment change also requires the creation of a igraph using sentiment and topic analysis). It is alo possible to perform different kinds of data exploration
