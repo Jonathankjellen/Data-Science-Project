@@ -1,6 +1,6 @@
 # Written by jonathan kjellen
 
-# Before running this file make sure these paths contain the correct file:
+# Before running this file make sure these paths contain the correct file and run the file from the base of data-science-project folder::
 file_path_questions_answers = 'data/data_all/data_all_final.txt'
 # Installing transformers is also needed by doing "pip install transformers"
 
