@@ -257,7 +257,7 @@ def main(start_date, end_date, output_name):
     database = parse_question_data(response_questions)
 
     # Remove repeated texts from questions and answers
-    database = remove_repeated_text(database)
+    database = remove_repeated_text_in_database(database)
 
     # Removes duplicate/triplicate entrys
     database = remove_duplicates(database)
